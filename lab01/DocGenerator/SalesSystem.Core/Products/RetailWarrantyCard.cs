@@ -7,7 +7,7 @@ public class RetailWarrantyCard: IWarranty
         return text;    
     }
 
-    public string GetSignatureData()
+    public string GetValidationData()
     {
         string text = "Подпись продавца: [_________] М.П.";
         return text;

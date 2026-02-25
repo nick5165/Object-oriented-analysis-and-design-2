@@ -13,4 +13,7 @@
     <SourceRoot Include="C:\Users\Kolia\.nuget\packages\" />
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgXceed_Words_NET Condition=" '$(PkgXceed_Words_NET)' == '' ">C:\Users\Kolia\.nuget\packages\xceed.words.net\5.2.25608.6677</PkgXceed_Words_NET>
+  </PropertyGroup>
 </Project>

@@ -1,17 +1,89 @@
 {
   "format": 1,
   "restore": {
-    "D:\\patterns\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj": {}
+    "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj": {}
   },
   "projects": {
-    "D:\\patterns\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj": {
+    "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\patterns\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj",
-        "projectName": "SalesSystem.Gui",
-        "projectPath": "D:\\patterns\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj",
+        "projectUniqueName": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
+        "projectName": "SalesSystem.Core",
+        "projectPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
         "packagesPath": "C:\\Users\\Kolia\\.nuget\\packages\\",
-        "outputPath": "D:\\patterns\\DocGenerator\\SalesSystem.Gui\\obj\\",
+        "outputPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Kolia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Xceed.Words.NET": {
+              "target": "Package",
+              "version": "[5.2.25608.6677, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj",
+        "projectName": "SalesSystem.Gui",
+        "projectPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Gui\\SalesSystem.Gui.csproj",
+        "packagesPath": "C:\\Users\\Kolia\\.nuget\\packages\\",
+        "outputPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Gui\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,7 +104,11 @@
         "frameworks": {
           "net9.0-windows7.0": {
             "targetAlias": "net9.0-windows",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj": {
+                "projectPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

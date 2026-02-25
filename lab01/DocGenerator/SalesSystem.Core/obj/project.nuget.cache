@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KbcZLSp58L0=",
+  "dgSpecHash": "s2+MeoNdzgw=",
   "success": true,
-  "projectFilePath": "D:\\patterns\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
+  "projectFilePath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kolia\\.nuget\\packages\\skiasharp\\2.88.8\\skiasharp.2.88.8.nupkg.sha512",
     "C:\\Users\\Kolia\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.8\\skiasharp.nativeassets.macos.2.88.8.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\patterns\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj": {}
+    "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj": {}
   },
   "projects": {
-    "D:\\patterns\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj": {
+    "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\patterns\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
+        "projectUniqueName": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
         "projectName": "SalesSystem.Core",
-        "projectPath": "D:\\patterns\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
+        "projectPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\SalesSystem.Core.csproj",
         "packagesPath": "C:\\Users\\Kolia\\.nuget\\packages\\",
-        "outputPath": "D:\\patterns\\DocGenerator\\SalesSystem.Core\\obj\\",
+        "outputPath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

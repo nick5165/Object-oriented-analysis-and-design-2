@@ -3,9 +3,9 @@ using SalesSystem.Core.Models;
 public class WholesaleQualityAssurance: IWarranty
 {
     public WholesaleCustomer Customer { get; set; }
-    public WholesaleQualityAssurance(WholeSaleCustomer customer)
+    public WholesaleQualityAssurance(WholesaleCustomer customer)
     {
-        customer = Customer;
+        Customer = customer;
     }
     public string GetWarrantyTerms()
     {
@@ -13,7 +13,7 @@ public class WholesaleQualityAssurance: IWarranty
         return text;
     }
 
-    public string GetSignatureData()
+    public string GetValidationData()
     {
         string text = "Документ верифицирован в системе ЭДО. Покупатель: {Customer.Name}. ЭЦП: {Customer.Signature}. Оттиск печати: {Customer.PrintPath}";
         return text;
