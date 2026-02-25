@@ -1,0 +1,12 @@
+D:\patterns\DocGenerator\SalesSystem.Core\bin\Debug\net9.0\SalesSystem.Core.deps.json
+D:\patterns\DocGenerator\SalesSystem.Core\bin\Debug\net9.0\SalesSystem.Core.dll
+D:\patterns\DocGenerator\SalesSystem.Core\bin\Debug\net9.0\SalesSystem.Core.pdb
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.csproj.AssemblyReference.cache
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.AssemblyInfoInputs.cache
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.AssemblyInfo.cs
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.csproj.CoreCompileInputs.cache
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.dll
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\refint\SalesSystem.Core.dll
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.pdb
+D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\ref\SalesSystem.Core.dll
