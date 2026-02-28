@@ -10,3 +10,16 @@ D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.dll
 D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\refint\SalesSystem.Core.dll
 D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.pdb
 D:\patterns\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\ref\SalesSystem.Core.dll
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\bin\Debug\net9.0\SalesSystem.Core.deps.json
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\bin\Debug\net9.0\SalesSystem.Core.dll
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\bin\Debug\net9.0\SalesSystem.Core.pdb
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.csproj.AssemblyReference.cache
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.AssemblyInfoInputs.cache
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.AssemblyInfo.cs
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.csproj.CoreCompileInputs.cache
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.sourcelink.json
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.dll
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\refint\SalesSystem.Core.dll
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\SalesSystem.Core.pdb
+D:\Object-oriented-analysis-and-design-2\lab01\DocGenerator\SalesSystem.Core\obj\Debug\net9.0\ref\SalesSystem.Core.dll
