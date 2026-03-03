@@ -1,0 +1,4 @@
+[
+  { "CourierName": "Олег Быстроходов", "VehicleNumber": "В777ОР", "DeliveryPrice": 1200.0, "Status": "Свободен" },
+  { "CourierName": "Мария Скорая", "VehicleNumber": "Е444КХ", "DeliveryPrice": 1500.0, "Status": "В рейсе" }
+]

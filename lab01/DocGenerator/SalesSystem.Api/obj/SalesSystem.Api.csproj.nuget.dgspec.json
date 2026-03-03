@@ -55,9 +55,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[10.1.4, )"
             }
           },
           "imports": [
@@ -130,9 +130,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Xceed.Words.NET": {
+            "QuestPDF": {
               "target": "Package",
-              "version": "[5.2.25608.6677, )"
+              "version": "[2026.2.2, )"
             }
           },
           "imports": [

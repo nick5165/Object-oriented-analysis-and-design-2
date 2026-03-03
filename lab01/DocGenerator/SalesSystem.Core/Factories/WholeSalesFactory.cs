@@ -8,9 +8,9 @@ public class WholeSalesFactory: ISalesFactory
     private WholesaleCustomer _customer;
     private Supplier _supplier;
     private Owner _owner;
-    private DeliveryInfo _deliveryInfo;
+    private DeliveryInfo? _deliveryInfo;
 
-    public WholeSalesFactory(Owner owner, WholesaleCustomer customer, List<Product> items, Supplier supplier, DeliveryInfo deliveryInfo)
+    public WholeSalesFactory(Owner owner, WholesaleCustomer customer, List<Product> items, Supplier supplier, DeliveryInfo? deliveryInfo)
     {
         _owner = owner;
         _items = items;
@@ -23,7 +23,7 @@ public class WholeSalesFactory: ISalesFactory
     {
         return new WholesaleContract(_owner, _customer, _supplier, _items, _deliveryInfo);
     }
-    
+
     public IWarranty CreateWarrantyDocument()
     {
         return new WholesaleQualityAssurance(_customer, _owner, _supplier);

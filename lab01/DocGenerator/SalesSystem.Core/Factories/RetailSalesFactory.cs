@@ -8,12 +8,12 @@ public class RetailSalesFactory: ISalesFactory
     private Owner _owner;
     private List<Product> _items;
 
-    public RetailSalesFactory(List<Product> items, Owner owner)
+    public RetailSalesFactory(Owner owner, List<Product> items) 
     {
         _owner = owner;
         _items = items;
     }
-    
+
     public IProofOfPurchase CreatePurchaseDocument()
     {
         return new RetailReceipt(_items, _owner);

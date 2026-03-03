@@ -1,0 +1,9 @@
+@echo off
+echo Запуск Бэкенда (API)...
+start dotnet run --project SalesSystem.Api
+
+echo Ожидание запуска сервера...
+timeout /t 5
+
+echo Запуск Интерфейса (GUI)...
+start dotnet run --project SalesSystem.Gui

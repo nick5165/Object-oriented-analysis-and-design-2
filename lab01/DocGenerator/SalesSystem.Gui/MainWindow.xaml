@@ -1,12 +1,39 @@
 ﻿<Window x:Class="SalesSystem.Gui.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SalesSystem.Gui"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        Title="Система ЭДО - Просмотр документов" Height="600" Width="1000">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <Border Grid.Column="0" Padding="20" Background="#F3F3F3">
+            <StackPanel>
+                <TextBlock Text="Настройки документа" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+                
+                <TextBlock Text="Имя покупателя:"/>
+                <TextBox x:Name="CustomerNameBox" Margin="0,5,0,15" Text="Иван Оптовик"/>
+
+                <TextBlock Text="Товары (через запятую):"/>
+                <TextBox x:Name="ProductsBox" Margin="0,5,0,15" Text="Промышленный сервер, Сетевой коммутатор L3"/>
+
+                <CheckBox x:Name="WholesaleCheck" Content="Оптовая закупка" IsChecked="True" Margin="0,5"/>
+                <CheckBox x:Name="DeliveryCheck" Content="Доставка" IsChecked="True" Margin="0,5"/>
+
+                <TextBlock Text="Тип документа:" Margin="0,10,0,5"/>
+                <ComboBox x:Name="DocTypeCombo" SelectedIndex="0" Margin="0,0,0,20">
+                    <ComboBoxItem Content="Оба документа" Tag="Both"/>
+                    <ComboBoxItem Content="Только договор/чек" Tag="Purchase"/>
+                    <ComboBoxItem Content="Только гарантия" Tag="Warranty"/>
+                </ComboBox>
+
+                <Button Content="Сгенерировать и открыть" Height="40" Background="#007ACC" Foreground="White" Click="OnGenerateClick"/>
+                <TextBlock x:Name="StatusLabel" Margin="0,15,0,0" TextWrapping="Wrap" Foreground="Gray"/>
+            </StackPanel>
+        </Border>
+
+        <wv2:WebView2 Grid.Column="1" x:Name="PdfViewer" Margin="10"/>
     </Grid>
 </Window>

@@ -1,19 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "56z/ReqvX4c=",
+  "dgSpecHash": "Lz8P8OJHvWM=",
   "success": true,
   "projectFilePath": "D:\\Object-oriented-analysis-and-design-2\\lab01\\DocGenerator\\SalesSystem.Api\\SalesSystem.Api.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Kolia\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.0\\microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\skiasharp\\2.88.8\\skiasharp.2.88.8.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\skiasharp.nativeassets.macos\\2.88.8\\skiasharp.nativeassets.macos.2.88.8.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\skiasharp.nativeassets.win32\\2.88.8\\skiasharp.nativeassets.win32.2.88.8.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\system.io.packaging\\4.5.0\\system.io.packaging.4.5.0.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\xceed.document.net\\5.2.25608.6677\\xceed.document.net.5.2.25608.6677.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\xceed.drawing.net\\1.0.25608.6677\\xceed.drawing.net.1.0.25608.6677.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\xceed.pdf\\5.2.25608.6677\\xceed.pdf.5.2.25608.6677.nupkg.sha512",
-    "C:\\Users\\Kolia\\.nuget\\packages\\xceed.words.net\\5.2.25608.6677\\xceed.words.net.5.2.25608.6677.nupkg.sha512"
+    "C:\\Users\\Kolia\\.nuget\\packages\\microsoft.extensions.apidescription.server\\9.0.0\\microsoft.extensions.apidescription.server.9.0.0.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\questpdf\\2026.2.2\\questpdf.2026.2.2.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.4\\swashbuckle.aspnetcore.10.1.4.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.4\\swashbuckle.aspnetcore.swagger.10.1.4.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.4\\swashbuckle.aspnetcore.swaggergen.10.1.4.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.4\\swashbuckle.aspnetcore.swaggerui.10.1.4.nupkg.sha512",
+    "C:\\Users\\Kolia\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
   ],
   "logs": []
 }

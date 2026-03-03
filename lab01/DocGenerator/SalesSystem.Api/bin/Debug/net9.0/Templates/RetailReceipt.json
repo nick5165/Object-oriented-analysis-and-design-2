@@ -1,0 +1,5 @@
+{
+  "Header": "КАССОВЫЙ ЧЕК\nМагазин: {{OwnerName}}",
+  "Body": "Дата: {{CurrentDate}}\n--------------------------------\n{{ItemsTable}}\n--------------------------------\nИТОГО: {{TotalSum}}\n\nСПАСИБО ЗА ПОКУПКУ!",
+  "ItemRow": "{{ItemName}} x {{ItemCount}} .... {{ItemSum}}\n"
+}

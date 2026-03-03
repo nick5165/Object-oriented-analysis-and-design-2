@@ -8,104 +8,129 @@
     ".NETCoreApp,Version=v9.0": {
       "SalesSystem.Core/1.0.0": {
         "dependencies": {
-          "Xceed.Words.NET": "5.2.25608.6677"
+          "QuestPDF": "2026.2.2"
         },
         "runtime": {
           "SalesSystem.Core.dll": {}
         }
       },
-      "SkiaSharp/2.88.8": {
-        "dependencies": {
-          "SkiaSharp.NativeAssets.Win32": "2.88.8",
-          "SkiaSharp.NativeAssets.macOS": "2.88.8"
-        },
+      "QuestPDF/2026.2.2": {
         "runtime": {
-          "lib/net6.0/SkiaSharp.dll": {
-            "assemblyVersion": "2.88.0.0",
-            "fileVersion": "2.88.8.0"
+          "lib/net8.0/QuestPDF.dll": {
+            "assemblyVersion": "2026.2.2.0",
+            "fileVersion": "2026.2.2.0"
           }
-        }
-      },
-      "SkiaSharp.NativeAssets.macOS/2.88.8": {
+        },
         "runtimeTargets": {
-          "runtimes/osx/native/libSkiaSharp.dylib": {
-            "rid": "osx",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "SkiaSharp.NativeAssets.Win32/2.88.8": {
-        "runtimeTargets": {
-          "runtimes/win-arm64/native/libSkiaSharp.dll": {
-            "rid": "win-arm64",
+          "runtimes/linux-arm64/native/libQuestPdfSkia.so": {
+            "rid": "linux-arm64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
-          "runtimes/win-x64/native/libSkiaSharp.dll": {
+          "runtimes/linux-arm64/native/libqpdf.so": {
+            "rid": "linux-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-musl-x64/native/libQuestPdfSkia.so": {
+            "rid": "linux-musl-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-musl-x64/native/libqpdf.so": {
+            "rid": "linux-musl-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libQuestPdfSkia.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/linux-x64/native/libqpdf.so": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libQuestPdfSkia.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-arm64/native/libqpdf.dylib": {
+            "rid": "osx-arm64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libQuestPdfSkia.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/libqpdf.dylib": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/QuestPdfSkia.dll": {
             "rid": "win-x64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
-          "runtimes/win-x86/native/libSkiaSharp.dll": {
+          "runtimes/win-x64/native/libgcc_s_seh-1.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/libstdc++-6.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/libwinpthread-1.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.0.0"
+          },
+          "runtimes/win-x64/native/qpdf.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/zlib1.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/QuestPdfSkia.dll": {
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "System.IO.Packaging/4.5.0": {
-        "runtime": {
-          "lib/netstandard2.0/System.IO.Packaging.dll": {
-            "assemblyVersion": "4.0.3.0",
-            "fileVersion": "4.6.26515.6"
-          }
-        }
-      },
-      "Xceed.Document.NET/5.2.25608.6677": {
-        "dependencies": {
-          "System.IO.Packaging": "4.5.0",
-          "Xceed.Drawing.NET": "1.0.25608.6677",
-          "Xceed.Pdf": "5.2.25608.6677"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.Document.NET.dll": {
-            "assemblyVersion": "5.2.25608.6677",
-            "fileVersion": "5.2.25608.6677"
-          }
-        }
-      },
-      "Xceed.Drawing.NET/1.0.25608.6677": {
-        "dependencies": {
-          "SkiaSharp": "2.88.8"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.Drawing.NET.dll": {
-            "assemblyVersion": "1.0.25608.6677",
-            "fileVersion": "1.0.25608.6677"
-          }
-        }
-      },
-      "Xceed.Pdf/5.2.25608.6677": {
-        "dependencies": {
-          "Xceed.Drawing.NET": "1.0.25608.6677"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.PDF.NET.dll": {
-            "assemblyVersion": "5.2.25608.6677",
-            "fileVersion": "5.2.25608.6677"
-          }
-        }
-      },
-      "Xceed.Words.NET/5.2.25608.6677": {
-        "dependencies": {
-          "Xceed.Document.NET": "5.2.25608.6677",
-          "Xceed.Drawing.NET": "1.0.25608.6677"
-        },
-        "runtime": {
-          "lib/net5.0/Xceed.Words.NET.dll": {
-            "assemblyVersion": "5.2.25608.6677",
-            "fileVersion": "5.2.25608.6677"
+          },
+          "runtimes/win-x86/native/libgcc_s_dw2-1.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/libstdc++-6.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/libwinpthread-1.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.0.0"
+          },
+          "runtimes/win-x86/native/qpdf.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/zlib1.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
           }
         }
       }
@@ -117,61 +142,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SkiaSharp/2.88.8": {
+    "QuestPDF/2026.2.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
-      "path": "skiasharp/2.88.8",
-      "hashPath": "skiasharp.2.88.8.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.macOS/2.88.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-6Kn5TSkKlfyS6azWHF3Jk2sW5C4jCE5uSshM/5AbfFrR+5n6qM5XEnz9h4VaVl7LTxBvHvMkuPb/3bpbq0vxTw==",
-      "path": "skiasharp.nativeassets.macos/2.88.8",
-      "hashPath": "skiasharp.nativeassets.macos.2.88.8.nupkg.sha512"
-    },
-    "SkiaSharp.NativeAssets.Win32/2.88.8": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-O9QXoWEXA+6cweR4h3BOnwMz+pO9vL9mXdjLrpDd0w1QzCgWmLQBxa1VgySDITiH7nQndrDG1h6937zm9pLj1Q==",
-      "path": "skiasharp.nativeassets.win32/2.88.8",
-      "hashPath": "skiasharp.nativeassets.win32.2.88.8.nupkg.sha512"
-    },
-    "System.IO.Packaging/4.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-OjtW5pGp1E7KE3ontBrzy+nSFJCM6pcbVDdo3gg4DauTfdtZKdeKvMVlADF4fSY+OfXWUp4qCvOSxIltt37LbA==",
-      "path": "system.io.packaging/4.5.0",
-      "hashPath": "system.io.packaging.4.5.0.nupkg.sha512"
-    },
-    "Xceed.Document.NET/5.2.25608.6677": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-pyITd3p5fffQ+/Guhg2fVXQmQKtTdiSK2CMyfj6b2m2X7T8TampKQQuFgNbmK0va/AG/0GbZ30IGCUICBzS4wQ==",
-      "path": "xceed.document.net/5.2.25608.6677",
-      "hashPath": "xceed.document.net.5.2.25608.6677.nupkg.sha512"
-    },
-    "Xceed.Drawing.NET/1.0.25608.6677": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xpo8+PNofLGdJ13UEQ/D86+e9QdE+2GTt3WLD//LLraxXV7Q6QeT5uf4V3KUs8ENQ7E/85VbGbe/fswGXqIgkQ==",
-      "path": "xceed.drawing.net/1.0.25608.6677",
-      "hashPath": "xceed.drawing.net.1.0.25608.6677.nupkg.sha512"
-    },
-    "Xceed.Pdf/5.2.25608.6677": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-6bVz8pcY+mSBsed6fC+XDekIPU4BSNEN5NdTHjOXYwG4aQHwZLs6mS75AU4gnFybWqfntgsqjWjLuGBTvjPx1g==",
-      "path": "xceed.pdf/5.2.25608.6677",
-      "hashPath": "xceed.pdf.5.2.25608.6677.nupkg.sha512"
-    },
-    "Xceed.Words.NET/5.2.25608.6677": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/HLPgvTkC2c4S9mrIwcXC9hIR2KRE3pdfxyhf14lC2ll1/7O1e8llYyzq4VeugYmr7v06x4HqkE0T+H51Co03Q==",
-      "path": "xceed.words.net/5.2.25608.6677",
-      "hashPath": "xceed.words.net.5.2.25608.6677.nupkg.sha512"
+      "sha512": "sha512-LAcnbU7Zx/adNX5+JBwRSazCLhNNrm2HMQJQVhUtzjq2hXl7QWOVS8a8bb+a6AjhV2hdC9saVqgYzjCpYgMa1g==",
+      "path": "questpdf/2026.2.2",
+      "hashPath": "questpdf.2026.2.2.nupkg.sha512"
     }
   }
 }
