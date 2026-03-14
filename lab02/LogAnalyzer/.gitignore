@@ -1,0 +1,7 @@
+build/
+_deps/
+.cache/
+.vscode/
+*.obj
+*.exe
+*.pdp
