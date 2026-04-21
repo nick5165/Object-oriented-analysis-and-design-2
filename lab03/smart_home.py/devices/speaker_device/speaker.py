@@ -1,5 +1,4 @@
-from typing import Dict, Any
-
+from typing import Dict, Any, List
 from core.device import Device
 
 class Speaker(Device):
@@ -8,6 +7,7 @@ class Speaker(Device):
         self.volume = 50
         self.is_playing = False
         self.current_track = "None"
+        self.playlist: List[str] = []
 
     def get_state(self) -> Dict[str, Any]:
         """Сохраняем полный слепок состояния колонки."""
@@ -41,3 +41,31 @@ class Speaker(Device):
     def change_track(self, track_name: str):
         self.current_track = track_name
         print(f"[Speaker:{self.name}] Трек изменен на: {track_name}")
+
+    def set_playlist(self, tracks: List[str]):
+        """Загружает список доступных треков."""
+        self.playlist = tracks
+
+    def next_track(self):
+        """Переключает на следующий трек по кругу."""
+        if not self.playlist:
+            return
+        if self.current_track in self.playlist:
+            idx = self.playlist.index(self.current_track)
+            next_idx = (idx + 1) % len(self.playlist)
+            self.current_track = self.playlist[next_idx]
+        else:
+            self.current_track = self.playlist[0]
+        print(f"[Speaker:{self.name}] Следующий трек: {self.current_track}")
+
+    def prev_track(self):
+        """Переключает на предыдущий трек."""
+        if not self.playlist:
+            return
+        if self.current_track in self.playlist:
+            idx = self.playlist.index(self.current_track)
+            prev_idx = (idx - 1) % len(self.playlist)
+            self.current_track = self.playlist[prev_idx]
+        else:
+            self.current_track = self.playlist[-1]
+        print(f"[Speaker:{self.name}] Предыдущий трек: {self.current_track}")

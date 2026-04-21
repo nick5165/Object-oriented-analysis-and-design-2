@@ -2,7 +2,6 @@ from core.command import Command
 from devices.light_device.light import Light
 
 class TurnOnCommand(Command):
-    """Простая команда без дополнительных параметров."""
     def execute(self) -> bool:
         if self.device.is_on:
             return False
@@ -11,8 +10,17 @@ class TurnOnCommand(Command):
         self.device.turn_on()
         return True
 
+class LightToggleCommand(Command):
+    """Команда для переключения состояния лампы (Вкл/Выкл)."""
+    def execute(self) -> bool:
+        self.save_backup()
+        if self.device.is_on:
+            self.device.turn_off()
+        else:
+            self.device.turn_on()
+        return True
+
 class ChangeColorCommand(Command):
-    """Команда с одним параметром — цветом."""
     def __init__(self, app, device: Light, new_color: str):
         super().__init__(app, device)
         self.new_color = new_color
@@ -26,7 +34,6 @@ class ChangeColorCommand(Command):
         return True
 
 class RelaxModeCommand(Command):
-    """Сложная команда, меняющая сразу несколько параметров."""
     def __init__(self, app, device: Light):
         super().__init__(app, device)
         self.target_brightness = 30
