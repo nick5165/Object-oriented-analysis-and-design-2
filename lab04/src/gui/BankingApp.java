@@ -3,17 +3,30 @@ package gui;
 import database.PostgresTransactionRepository;
 import scoring.BadCreditCalculator;
 import scoring.CreditCalculator;
-import scoring.Transaction;
 import scoring.TransactionRepository;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.math.BigDecimal;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.time.format.DateTimeFormatter;
 
 public class BankingApp extends JFrame {
+
+    // ПРИНУДИТЕЛЬНАЯ ЗАГРУЗКА ДРАЙВЕРА
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(null, 
+                "Драйвер PostgreSQL не найден в памяти!\n\nЗапустите программу строго через терминал с флагом -cp:\njava -cp \".;../postgresql-42.7.2.jar\" gui.BankingApp", 
+                "Критическая ошибка", 
+                JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
+    }
 
     private final JTextArea logArea;
     private final JTextField urlField;
@@ -21,146 +34,197 @@ public class BankingApp extends JFrame {
     private final JPasswordField passField;
     private final JTextField userIdField;
 
+    // Палитра темной темы
+    private final Color BG_DARK = new Color(30, 30, 30);
+    private final Color BG_PANEL = new Color(45, 45, 48);
+    private final Color TEXT_LIGHT = new Color(220, 220, 220);
+    private final Color ACCENT_GREEN = new Color(40, 167, 69);
+    private final Color ACCENT_RED = new Color(220, 53, 69);
+    private final Font FONT_MAIN = new Font("Segoe UI", Font.PLAIN, 14);
+
     public BankingApp() {
-        setTitle("Система Скоринга | Демонстрация 'Separated Interface'");
-        setSize(850, 600);
+        setupGlobalTheme();
+        
+        setTitle("Scoring Control Center | Separated Interface Pattern");
+        setSize(1000, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout());
+        getContentPane().setBackground(BG_DARK);
 
-        JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        // --- ШАПКА ---
+        JLabel headerLabel = new JLabel("  СИСТЕМА СКОРИНГА ПРЕДПРИЯТИЯ (ТОЛЬКО РЕАЛЬНАЯ БД)", SwingConstants.LEFT);
+        headerLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        headerLabel.setForeground(Color.WHITE);
+        headerLabel.setOpaque(true);
+        headerLabel.setBackground(new Color(60, 60, 60));
+        headerLabel.setBorder(new EmptyBorder(15, 10, 15, 10));
+        add(headerLabel, BorderLayout.NORTH);
 
-        // --- ПАНЕЛЬ НАСТРОЕК ---
-        JPanel settingsPanel = new JPanel(new GridLayout(8, 1, 5, 5));
-        settingsPanel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(Color.GRAY), "Настройки БД и Пользователя", TitledBorder.LEFT, TitledBorder.TOP));
-        settingsPanel.setPreferredSize(new Dimension(300, 0));
+        // --- ЛЕВАЯ ПАНЕЛЬ (Настройки) ---
+        JPanel leftPanel = new JPanel(new GridBagLayout());
+        leftPanel.setBackground(BG_PANEL);
+        leftPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        leftPanel.setPreferredSize(new Dimension(350, 0));
 
-        settingsPanel.add(new JLabel("JDBC URL (Облако Neon):"));
-        // Твой URL уже вставлен по умолчанию!
-        urlField = new JTextField("jdbc:postgresql://ep-ancient-cloud-am50s93p.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require");
-        settingsPanel.add(urlField);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(0, 0, 8, 0);
+        gbc.weightx = 1.0;
+        gbc.gridx = 0;
 
-        settingsPanel.add(new JLabel("Пользователь БД:"));
-        userField = new JTextField("neondb_owner"); // Замени, если у тебя другой логин
-        settingsPanel.add(userField);
+        urlField = createStyledTextField("jdbc:postgresql://ep-ancient-cloud-am50s93p.c-5.us-east-1.aws.neon.tech/neondb?sslmode=require");
+        userField = createStyledTextField("neondb_owner");
+        passField = new JPasswordField("");
+        styleTextField(passField);
+        userIdField = createStyledTextField("user-123");
 
-        settingsPanel.add(new JLabel("Пароль БД:"));
-        passField = new JPasswordField(""); // Введешь свой пароль при запуске
-        settingsPanel.add(passField);
+        addFormRow(leftPanel, "JDBC URL (Neon Cloud):", urlField, gbc);
+        addFormRow(leftPanel, "Пользователь БД:", userField, gbc);
+        addFormRow(leftPanel, "Пароль БД:", passField, gbc);
+        
+        gbc.insets = new Insets(20, 0, 8, 0); // Отступ перед клиентом
+        addFormRow(leftPanel, "ID Клиента для расчета:", userIdField, gbc);
 
-        settingsPanel.add(new JLabel("ID Клиента для проверки:"));
-        userIdField = new JTextField("user-123");
-        settingsPanel.add(userIdField);
+        // --- ПРАВАЯ ПАНЕЛЬ (Терминал) ---
+        logArea = new JTextArea();
+        logArea.setEditable(false);
+        logArea.setBackground(new Color(20, 20, 20));
+        logArea.setForeground(new Color(0, 255, 128)); // Хакерский зеленый
+        logArea.setFont(new Font("Consolas", Font.PLAIN, 15));
+        logArea.setMargin(new Insets(15, 15, 15, 15));
 
-        // --- ПАНЕЛЬ КНОПОК ---
-        JPanel actionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
-        actionPanel.setBorder(BorderFactory.createTitledBorder("Запуск сценариев (Паттерны)"));
+        JScrollPane scrollPane = new JScrollPane(logArea);
+        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(60, 60, 60), 1));
+        scrollPane.getVerticalScrollBar().setBackground(BG_PANEL);
 
-        JButton btnBad = createStyledButton("БЕЗ паттерна (Жесткая связь)", new Color(220, 53, 69));
-        JButton btnProd = createStyledButton("С паттерном (Реальная БД)", new Color(40, 167, 69));
-        JButton btnMock = createStyledButton("С паттерном (Тест / Без БД)", new Color(0, 123, 255));
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, leftPanel, scrollPane);
+        splitPane.setDividerLocation(350);
+        splitPane.setDividerSize(3);
+        splitPane.setBorder(null);
+        add(splitPane, BorderLayout.CENTER);
+
+        // --- НИЖНЯЯ ПАНЕЛЬ (Кнопки) ---
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 20));
+        bottomPanel.setBackground(BG_DARK);
+
+        JButton btnBad = createStyledButton("ЗАПУСК БЕЗ ПАТТЕРНА", ACCENT_RED);
+        JButton btnProd = createStyledButton("ЗАПУСК С ПАТТЕРНОМ", ACCENT_GREEN);
 
         btnBad.addActionListener(e -> runBadApproach());
         btnProd.addActionListener(e -> runProdApproach());
-        btnMock.addActionListener(e -> runMockApproach());
 
-        actionPanel.add(btnBad);
-        actionPanel.add(btnProd);
-        actionPanel.add(btnMock);
+        bottomPanel.add(btnBad);
+        bottomPanel.add(btnProd);
 
-        // --- ПАНЕЛЬ ЛОГОВ ---
-        logArea = new JTextArea();
-        logArea.setEditable(false);
-        logArea.setBackground(new Color(43, 43, 43));
-        logArea.setForeground(new Color(169, 183, 198));
-        logArea.setFont(new Font("Consolas", Font.PLAIN, 14));
-        logArea.setMargin(new Insets(10, 10, 10, 10));
-
-        JScrollPane scrollPane = new JScrollPane(logArea);
-        scrollPane.setBorder(BorderFactory.createTitledBorder("Консоль вывода / Журнал событий"));
-
-        mainPanel.add(settingsPanel, BorderLayout.WEST);
-        mainPanel.add(scrollPane, BorderLayout.CENTER);
-        mainPanel.add(actionPanel, BorderLayout.NORTH);
-
-        add(mainPanel);
+        add(bottomPanel, BorderLayout.SOUTH);
+        
+        printLog("Драйвер БД успешно загружен.", "INFO");
+        printLog("Система инициализирована. Ожидание команд...", "INFO");
     }
 
-    private JButton createStyledButton(String text, Color color) {
+    // --- UI HELPER METHODS ---
+    private void setupGlobalTheme() {
+        UIManager.put("Label.foreground", TEXT_LIGHT);
+        UIManager.put("OptionPane.background", BG_PANEL);
+        UIManager.put("Panel.background", BG_PANEL);
+    }
+
+    private JTextField createStyledTextField(String text) {
+        JTextField field = new JTextField(text);
+        styleTextField(field);
+        return field;
+    }
+
+    private void styleTextField(JTextField field) {
+        field.setBackground(new Color(60, 60, 60));
+        field.setForeground(Color.WHITE);
+        field.setCaretColor(Color.WHITE);
+        field.setFont(FONT_MAIN);
+        field.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(80, 80, 80), 1),
+                new EmptyBorder(8, 10, 8, 10)
+        ));
+    }
+
+    private void addFormRow(JPanel panel, String labelText, JComponent field, GridBagConstraints gbc) {
+        JLabel label = new JLabel(labelText);
+        label.setFont(new Font("Segoe UI", Font.BOLD, 12));
+        label.setForeground(new Color(150, 150, 150));
+        panel.add(label, gbc);
+        gbc.insets = new Insets(0, 0, 15, 0);
+        panel.add(field, gbc);
+    }
+
+    private JButton createStyledButton(String text, Color baseColor) {
         JButton button = new JButton(text);
-        button.setFocusPainted(false);
-        button.setBackground(color);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 14));
         button.setForeground(Color.WHITE);
-        button.setFont(new Font("Arial", Font.BOLD, 12));
-        button.setPreferredSize(new Dimension(220, 35));
+        button.setBackground(baseColor);
+        button.setFocusPainted(false);
+        button.setBorder(new EmptyBorder(15, 40, 15, 40));
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        button.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(baseColor.brighter());
+            }
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(baseColor);
+            }
+        });
         return button;
     }
 
-    private void printLog(String message, boolean isError) {
-        if (isError) {
-            logArea.append("[ ОШИБКА ] " + message + "\n");
-        } else {
-            logArea.append(message + "\n");
-        }
+    private void printLog(String message, String level) {
+        String time = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        String prefix = "";
+        if (level.equals("ERROR")) prefix = "[X] ОШИБКА: ";
+        if (level.equals("SUCCESS")) prefix = "[V] РЕЗУЛЬТАТ: ";
+        if (level.equals("INFO")) prefix = "[i] ИНФО: ";
+        
+        logArea.append(String.format("%s | %s%s\n", time, prefix, message));
         logArea.setCaretPosition(logArea.getDocument().getLength());
     }
 
+    // --- БИЗНЕС ЛОГИКА ---
     private void runBadApproach() {
-        printLog("\n=======================================================", false);
-        printLog(">>> ЗАПУСК: Архитектура БЕЗ паттерна (BadCreditCalculator)", false);
+        printLog("--------------------------------------------------", "");
+        printLog("СТАРТ СЦЕНАРИЯ: БЕЗ ПАТТЕРНА (BadCreditCalculator)", "INFO");
         try {
             String pass = new String(passField.getPassword());
-            BadCreditCalculator badCalculator = new BadCreditCalculator(urlField.getText(), userField.getText(), pass);
+            if (pass.isEmpty()) throw new IllegalArgumentException("Пароль не может быть пустым!");
             
+            BadCreditCalculator badCalculator = new BadCreditCalculator(urlField.getText(), userField.getText(), pass);
             String userId = userIdField.getText();
             boolean result = badCalculator.isCreditApproved(userId);
             
-            printLog("[ УСПЕХ ] Результат для клиента '" + userId + "': " + (result ? "КРЕДИТ ОДОБРЕН" : "В КРЕДИТЕ ОТКАЗАНО"), false);
+            printLog("Клиент: " + userId + " -> " + (result ? "КРЕДИТ ОДОБРЕН" : "ОТКАЗ"), "SUCCESS");
         } catch (Exception ex) {
-            printLog(ex.getMessage(), true);
+            printLog(ex.getMessage(), "ERROR");
         }
     }
 
     private void runProdApproach() {
-        printLog("\n=======================================================", false);
-        printLog(">>> ЗАПУСК: Идеальная архитектура (CreditCalculator + PostgreSQL)", false);
+        printLog("--------------------------------------------------", "");
+        printLog("СТАРТ СЦЕНАРИЯ: С ПАТТЕРНОМ (CreditCalculator)", "INFO");
         try {
             String pass = new String(passField.getPassword());
+            if (pass.isEmpty()) throw new IllegalArgumentException("Пароль не может быть пустым!");
+            
             TransactionRepository sqlRepo = new PostgresTransactionRepository(urlField.getText(), userField.getText(), pass);
             CreditCalculator prodCalculator = new CreditCalculator(sqlRepo);
             
             String userId = userIdField.getText();
             boolean result = prodCalculator.isCreditApproved(userId);
             
-            printLog("[ УСПЕХ ] Результат из реальной БД для '" + userId + "': " + (result ? "КРЕДИТ ОДОБРЕН" : "В КРЕДИТЕ ОТКАЗАНО"), false);
+            printLog("Клиент: " + userId + " -> " + (result ? "КРЕДИТ ОДОБРЕН" : "ОТКАЗ"), "SUCCESS");
         } catch (Exception ex) {
-            printLog(ex.getMessage(), true);
+            printLog(ex.getMessage(), "ERROR");
         }
     }
 
-    private void runMockApproach() {
-        printLog("\n=======================================================", false);
-        printLog(">>> ЗАПУСК: Идеальная архитектура (CreditCalculator + Mock Test)", false);
-        
-        TransactionRepository mockRepo = userId -> {
-            printLog("    -> [MOCK-СЕРВЕР] Имитация ответа от БД для пользователя: " + userId, false);
-            return Arrays.asList(
-                new Transaction("m1", new BigDecimal("10000.00"), Transaction.Type.INCOME, LocalDateTime.now()),
-                new Transaction("m2", new BigDecimal("2000.00"), Transaction.Type.EXPENSE, LocalDateTime.now())
-            );
-        };
-
-        CreditCalculator testCalculator = new CreditCalculator(mockRepo);
-        String userId = userIdField.getText();
-        boolean result = testCalculator.isCreditApproved(userId);
-        
-        printLog("[ УСПЕХ ] Результат Mock-теста для '" + userId + "': " + (result ? "КРЕДИТ ОДОБРЕН" : "В КРЕДИТЕ ОТКАЗАНО"), false);
-    }
-
     public static void main(String[] args) {
-        try { UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); } catch (Exception ignored) {}
         SwingUtilities.invokeLater(() -> new BankingApp().setVisible(true));
     }
 }
